@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script>
+			$(document).ready(function()
+			{
+				function setHeight()
+				{
+					var height = $('#height').val();
+
+					window.parent.postMessage({
+						    "type": "view",
+						        "method": "set",
+							    "payload": {
+									"height": height 
+									}
+								}, "*");
+				}
+				$('#setHeight').click(function(){
+						setHeight();
+				});
+				
+
+				$('body').keydown(function(e){
+					if(e.keyCode === 13){
+						setHeight();	
+					}
+				});
+			});
+		</script>
+	</head>
+	<body style="background:  #f2f2f2;">
+		<h1> sample internal page </h1>
+		height: <input id="height" type="text"> </input> <button id="setHeight">set </button> 
+		<div>
+			<img src=""></img>
+		</div>
+	</body>
+</html>
